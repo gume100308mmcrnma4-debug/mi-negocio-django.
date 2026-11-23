@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +26,18 @@ SECRET_KEY = 'django-insecure-c&j3#1phrn$g(wtt3x227x-%zy82f8vayrh5#v5e*mj9h-%@lf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'mi-negocio-django-2a46.onrender.com',
-    'localhost',
-    '127.0.0.1',
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS',
+    'mi-negocio-django-1.onrender.com'
+).split(',')
+
+DEBUG =
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://mi-negocio-django-1.onrender.com",
 ]
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
