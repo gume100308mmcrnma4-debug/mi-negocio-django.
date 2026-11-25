@@ -1,0 +1,338 @@
+/* =========================================
+   1. VARIABLES Y RESET BASE
+   ========================================= */
+:root {
+    --color-primary: #2563EB;      /* Reemplaza por tu color primario */
+    --color-primary-hover: #1D4ED8;
+    --color-secondary: #475569;    /* Reemplaza por tu color secundario */
+    --color-bg: #F8FAFC;           /* Reemplaza por tu color de fondo */
+    --color-text: #0F172A;         /* Reemplaza por tu color de texto */
+    --color-surface: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-success: #16A34A;
+    --color-error: #DC2626;
+    --color-warning: #D97706;
+    --radius: 8px;
+    --space: 1rem;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, .logo {
+    font-family: var(--font-heading);
+    margin-bottom: calc(var(--space) * 0.75);
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: calc(var(--space) * 2) 0;
+}
+
+/* =========================================
+   2. HEADER Y NAVEGACIÓN (NAV)
+   ========================================= */
+.site-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space) 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.navbar, .site-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space);
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-bottom: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: calc(var(--space) * 1.5);
+    align-items: center;
+}
+
+.nav-links a, .site-header nav a:not(.logo):not(.btn) {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover, .site-header nav a:not(.logo):hover {
+    color: var(--color-primary);
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* =========================================
+   3. BOTONES (.btn, .btn-primary, .btn-danger)
+   ========================================= */
+.btn {
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--color-secondary);
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-danger {
+    background-color: var(--color-error);
+    color: #FFFFFF;
+}
+
+.btn-danger:hover {
+    background-color: #B91C1C;
+}
+
+/* =========================================
+   4. TARJETAS (CARDS)
+   ========================================= */
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: calc(var(--space) * 1.5);
+    margin-bottom: calc(var(--space) * 1.5);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================
+   5. TABLAS (CRUD)
+   ========================================= */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: calc(var(--space) * 1.5);
+}
+
+thead {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+}
+
+th, td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+tbody tr:hover {
+    background-color: rgba(37, 99, 235, 0.04);
+}
+
+/* =========================================
+   6. FORMULARIOS
+   ========================================= */
+form p, .form-group {
+    margin-bottom: var(--space);
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    color: var(--color-text);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* =========================================
+   7. MENSAJES DE DJANGO (SUCCESS / ERROR)
+   ========================================= */
+.messages {
+    list-style: none;
+    margin-bottom: calc(var(--space) * 1.5);
+}
+
+.message {
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    border-left: 4px solid transparent;
+}
+
+.message.success {
+    background-color: #DCFCE7;
+    color: #166534;
+    border-left-color: var(--color-success);
+}
+
+.message.error {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    border-left-color: var(--color-error);
+}
+
+.message.warning {
+    background-color: #FEF3C7;
+    color: #92400E;
+    border-left-color: var(--color-warning);
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.site-footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    padding: calc(var(--space) * 1.25) 0;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    margin-top: auto;
+}
+
+/* =========================================
+   9. DISEÑO RESPONSIVE (MÓVIL <= 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Menú colapsado en columna */
+    .navbar, .site-header nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .nav-auth {
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 0.5rem;
+        border-top: 1px solid var(--color-border);
+    }
+
+    /* Botones más cómodos al tacto en móvil */
+    .btn {
+        width: 100%;
+        margin-bottom: 0.4rem;
+    }
+
+    /* Tablas adaptadas como tarjetas en móvil */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none; /* Ocultamos cabecera tradicional en móvil */
+    }
+
+    tbody tr {
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        margin-bottom: var(--space);
+        padding: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    tbody td {
+        border-bottom: 1px solid var(--color-border);
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    tbody td:last-child {
+        border-bottom: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+    }
+}

@@ -129,3 +129,5 @@ def eliminar_cliente(request, pk):
         messages.success(request, 'Cliente eliminado correctamente.')
         return redirect('lista_clientes')
     return render(request, 'tienda/clientes/eliminar.html', {'cliente': cliente})
+
+    messages.success(request, "¡El registro se guardó correctamente!")
