@@ -2,38 +2,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"
->
-<title>{% block title %}Mi Proyecto{% endblock %}</title>
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Negocio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-<header class="site-header">
-<nav>
-<a href="{% url 'home' %}" class="logo">Mi Proyecto</a>
-{% if user.is_authenticated %}
-<span>Hola, {{ user.username }}</span>
+    <header class="site-header">
+        <nav>
+            <a href="{% url 'inicio' %}" class="logo">Mi Negocio</a>
+            
+            <div class="nav-links">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'lista_productos' %}">Productos</a>
+                <a href="{% url 'lista_categorias' %}">Categorías</a>
+                <a href="{% url 'lista_clientes' %}">Clientes</a>
+            </div>
 
-<a href="{% url 'logout' %}">Salir</a>
-{% else %}
-<a href="{% url 'login' %}">Entrar</a>
-{% endif %}
-</nav>
-</header>
-<main class="container">
-{% if messages %}
-<ul class="messages">
-{% for message in messages %}
-<li class="message {{ message.tags }}">{{ message }}<
-/li>
-{% endfor %}
-</ul>
-{% endif %}
-{% block content %}{% endblock %}
-</main>
-<footer class="site-footer">
-<p>© {% now "Y" %} — Tu Nombre</p>
-</footer>
+            <div class="nav-user">
+                {% if user.is_authenticated %}
+                    <span>Hola, {{ user.username }}</span>
+                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-logout">Salir</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn-login">Entrar</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>© {% now "Y" %} — Mi Negocio</p>
+    </footer>
 </body>
 </html>
