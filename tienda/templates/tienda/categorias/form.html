@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Formulario{% endblock %}
+{% block title %}{% if form.instance.pk %}Editar Categoría{% else %}Nueva Categoría{% endif %}{% endblock %}
 
 {% block content %}
 <div class="card" style="max-width: 600px; margin: 0 auto;">
-    <h2>{% if form.instance.pk %}Editar Registro{% else %}Nuevo Registro{% endif %}</h2>
+    <h2>{% if form.instance.pk %}Editar Categoría{% else %}Nueva Categoría{% endif %}</h2>
     
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -30,7 +30,7 @@
 
         <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{% url 'lista_registros' %}" class="btn">Cancelar</a>
+            <a href="{% url 'lista_categorias' %}" class="btn">Cancelar</a>
         </div>
     </form>
 </div>

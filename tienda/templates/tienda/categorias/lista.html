@@ -1,38 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}Listado de Registros{% endblock %}
+{% block title %}Listado de Categorías{% endblock %}
 
 {% block content %}
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-    <h1>Registros</h1>
-    <!-- Cambia 'crear_registro' por el name real de tu URL de creación -->
-    <a href="{% url 'crear_registro' %}" class="btn btn-primary">+ Nuevo Registro</a>
+    <h1>Categorías</h1>
+    <a href="{% url 'crear_categoria' %}" class="btn btn-primary">+ Nueva Categoría</a>
 </div>
 
 <div class="table-responsive">
     <table>
         <thead>
             <tr>
-                <th>Nombre / Título</th>
-                <th>Descripción / Detalle</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Cambia 'registros' por la variable que envías desde tu view -->
-            {% for item in registros %}
+            {% for item in categorias %}
             <tr>
                 <td>{{ item.nombre }}</td>
-                <td>{{ item.descripcion }}</td>
+                <td>{{ item.descripcion|default:"Sin descripción" }}</td>
                 <td>
-                    <a href="{% url 'editar_registro' item.id %}" class="btn">Editar</a>
-                    <a href="{% url 'eliminar_registro' item.id %}" class="btn btn-danger">Borrar</a>
+                    <a href="{% url 'editar_categoria' item.id %}" class="btn">Editar</a>
+                    <a href="{% url 'eliminar_categoria' item.id %}" class="btn btn-danger">Borrar</a>
                 </td>
             </tr>
             {% empty %}
             <tr>
                 <td colspan="3" style="text-align: center; padding: 2rem; color: var(--color-secondary);">
-                    No hay registros aún. ¡Crea el primero usando el botón superior!
+                    No hay categorías registradas aún. ¡Crea la primera usando el botón superior!
                 </td>
             </tr>
             {% endfor %}
