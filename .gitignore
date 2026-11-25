@@ -1,8 +1,23 @@
-﻿#!/usr/bin/env bash
-set -o errexit
+﻿
+# Entorno virtual
+venv/
+env/
+.venv/
 
-pip install -r requirements.txt
-python manage.py collectstatic --no-input
-python manage.py migrate
+# Python
+__pycache__/
+*.py[cod]
 
-DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@correo.com DJANGO_SUPERUSER_PASSWORD=Admin1234 python manage.py createsuperuser --noinput || true
+# Django
+*.log
+
+# Base de datos local
+db.sqlite3
+
+# Variables privadas
+.env
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
